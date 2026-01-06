@@ -1,7 +1,14 @@
 import express, { Request, Response } from "express";
 
 const app = express();
+app.use(express.json());
 
+
+app.post("/users", async(req: Request, res: Response)=>{
+    const body = req.body;
+    console.log('printing req.body--------');
+    console.log(body);
+})
 
 
 app.get("/", (req :Request , res: Response)=>{

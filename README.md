@@ -20,13 +20,29 @@
 11. Make this like : "verbatimModuleSyntax": false, 
 Or, Comment this line as it was.
 
-12. Create a folder named "src" and make a new file named "server.ts"
-13. Create this root route
+12. Add this body parser : 
+```bash
+app.use(express.json());
+```
+13. Create a folder named "src" and make a new file named "server.ts"
+14. Create this root route
 ```bash
 app.get("/", (req :Request , res: Response)=>{
     res.status(200).json({
         message: "This is the root route",
         path: req.path,
     })
+})
+```
+
+15. Basic Server.ts file should look like this: 
+```bash
+import express, { Request, Response } from "express";
+
+const app = express();
+app.use(express.json());
+
+app.listen(5000, ()=>{
+    console.log(`Server is running on port 5000`);
 })
 ```
