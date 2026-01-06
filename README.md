@@ -20,4 +20,12 @@
 11. Make this like : "verbatimModuleSyntax": false,
 
 12. Create a folder named "src" and make a new file named "server.ts"
-
+13. Create this root route
+```bash
+app.get("/", (req :Request , res: Response)=>{
+    res.status(200).json({
+        message: "This is the root route",
+        path: req.path,
+    })
+})
+```
