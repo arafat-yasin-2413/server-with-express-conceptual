@@ -1,49 +1,15 @@
 import express, { Request, Response } from "express";
 import {Pool} from "pg";
+import { userRoutes } from "./modules/user/user.route";
+import { initDB } from "./database/db";
 
 const app = express();
 app.use(express.json());
 
-const pool = new Pool({
-    connectionString: 'postgresql://neondb_owner:npg_o0XgA6pjPULG@ep-red-river-a8cato4q-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require'
-})
-
-
-const initDB = async()=>{
-    await pool.query(
-        `   
-            CREATE TABLE IF NOT EXISTS users(
-            id SERIAL PRIMARY KEY,
-            name VARCHAR(250) NOT NULL,
-            email VARCHAR(150) UNIQUE,
-            password TEXT NOT NULL,
-            age INT,
-            created_at TIMESTAMP DEFAULT NOW(),
-            updated_at TIMESTAMP DEFAULT NOW()
-            )
-
-        `)
-
-        console.log("Database connected");
-}
 
 initDB();
 
-app.post("/users", async(req: Request, res: Response)=>{
-    const {name , email, password } = req.body;
-
-    const result = await pool.query (`
-            INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *
-        `,[name, email, password]);
-
-        // console.log(result);
-
-        res.status(201).json({
-            success: true,
-            message: "User Created",
-            data: result.rows[0]
-        })
-});
+app.use("/api/v1/users",userRoutes);
 
 
 app.get("/", (req :Request , res: Response)=>{
