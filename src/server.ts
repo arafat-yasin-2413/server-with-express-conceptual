@@ -1,9 +1,10 @@
 import express, { Request, Response } from "express";
+import {Pool} from "pg";
 
 const app = express();
 app.use(express.json());
 
-
+const pool = new Pool
 
 app.post("/users", async(req: Request, res: Response)=>{
     const body = req.body;

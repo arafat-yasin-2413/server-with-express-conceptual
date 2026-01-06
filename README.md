@@ -75,3 +75,8 @@ app.listen(5000, ()=>{
 ```bash
 npm install pg
 ```
+
+17. After importing "Pool" from "pg" Now "Counld not find a declaration file for module "pg". Run 
+```bash
+npm i --save-dev @types/pg
+``` 
