@@ -17,7 +17,8 @@
 
 
 10. Comment Other Outputs Section
-11. Make this like : "verbatimModuleSyntax": false,
+11. Make this like : "verbatimModuleSyntax": false, 
+Or, Comment this line as it was.
 
 12. Create a folder named "src" and make a new file named "server.ts"
 13. Create this root route
