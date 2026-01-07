@@ -8,13 +8,13 @@ const createUser = async (payload: Record<string, unknown>) => {
 
 	const result = await pool.query(
 		`
-            INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *
+            INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING id, name, email, age, created_at, updated_at 
         `,
 		[name, email, hashedPassword]
 	);
 
     // console.log("Result : ---", result);
-    delete result.rows[0].password;
+    // delete result.rows[0].password;
 
 	return result;
 };
@@ -22,3 +22,5 @@ const createUser = async (payload: Record<string, unknown>) => {
 export const userServices = {
 	createUser,
 };
+
+
