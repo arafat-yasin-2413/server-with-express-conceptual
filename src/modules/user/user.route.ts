@@ -7,5 +7,6 @@ import verify from "../../middleware/verify";
 const router = Router();
 
 router.post("/", verify, userController.createUser);
+router.get("/", userController.getAllUser);
 
 export const userRoutes = router;
