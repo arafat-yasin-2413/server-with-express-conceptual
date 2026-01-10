@@ -12,7 +12,7 @@ const loginUser = async(req:Request, res:Response) =>{
         return res.status(200).json({
             success: true,
             message: "Successfully Logged in",
-            data: result.rows[0],
+            data: result,
         })
     }
     catch(err:any){
