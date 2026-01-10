@@ -7,7 +7,7 @@ const loginUser = async(req:Request, res:Response) =>{
     try{
         
         const result = await authService.loginUser(req.body.email, req.body.password);
-        
+        console.log('printing in auth.controller : --- =>', result)
 
         return res.status(200).json({
             success: true,

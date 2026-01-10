@@ -28,7 +28,7 @@ const loginUser = async (email: string, password: string) => {
 	const token = jwt.sign (jwtPayload,secret,{expiresIn: "7d"});
 
 
-	return {result, token}; 
+	return {user, token}; 
 };
 
 export const authService = {
