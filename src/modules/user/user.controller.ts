@@ -23,7 +23,7 @@ const createUser = async (req: Request, res: Response) => {
 const getAllUser = async(req:Request,res:Response) =>{
     try{
         const result = await userServices.getAllUser();
-        console.log('printing user.controller ... ----', result);
+        // console.log('printing user.controller ... ----', result);
 
         return res.status(200).json({
             success: true,
