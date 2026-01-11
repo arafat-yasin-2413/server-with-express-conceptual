@@ -9,5 +9,6 @@ const router = Router();
 
 router.post("/", verify, userController.createUser);
 router.get("/",auth(), userController.getAllUser);
+router.get("/singleUser", auth(), userController.getSingleUser);
 
 export const userRoutes = router;
