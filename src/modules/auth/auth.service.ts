@@ -29,6 +29,7 @@ const loginUser = async (email: string, password: string) => {
     id: user.id,
     name: user.name,
     email: user.email,
+    role: user.role,
   };
   const token = jwt.sign(jwtPayload, secret, { expiresIn: "7d" });
 

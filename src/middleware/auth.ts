@@ -3,7 +3,10 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { secret } from "../modules/auth/auth.service";
 import { pool } from "../database/db";
 
-const auth = () =>{
+const auth = (...role : string[]) =>{
+    
+    console.log('Role from user route parameter : ', role);
+
     return async (req:Request, res:Response, next:NextFunction) =>{
         const token = req.headers.authorization;
         // console.log('printing in auth.ts ----',token);
