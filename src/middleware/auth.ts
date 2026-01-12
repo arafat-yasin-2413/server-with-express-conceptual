@@ -3,9 +3,9 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { secret } from "../modules/auth/auth.service";
 import { pool } from "../database/db";
 
-const auth = (...role : string[]) =>{
+const auth = (...roles : string[]) =>{
     
-    console.log('Role from user route parameter : ', role);
+    console.log('Role from user route parameter : ', roles);
 
     return async (req:Request, res:Response, next:NextFunction) =>{
         const token = req.headers.authorization;
@@ -26,6 +26,9 @@ const auth = (...role : string[]) =>{
         console.log('Decoded token : --- : ', decoded);
         req.user = decoded;
 
+        if(roles.length && !roles.includes(decoded.role)){
+            throw new Error("You are not authorized to watch all users!");
+        }
         next();
     }
 }
