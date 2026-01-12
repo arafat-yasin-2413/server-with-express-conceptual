@@ -3,7 +3,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { secret } from "../modules/auth/auth.service";
 import { pool } from "../database/db";
 
-const auth = (...roles : string[]) =>{
+const auth = (...roles : ('admin' | 'user')[]) =>{
     
     console.log('Role from user route parameter : ', roles);
 
