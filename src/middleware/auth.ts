@@ -4,7 +4,7 @@ import { secret } from "../modules/auth/auth.service";
 import { pool } from "../database/db";
 
 const auth = (...roles: ("admin" | "user")[]) => {
-    console.log("Role from user route parameter : ", roles);
+    // console.log("Role from user route parameter : ", roles);
 
     return async (req: Request, res: Response, next: NextFunction) => {
         const token = req.headers.authorization;
@@ -24,7 +24,7 @@ const auth = (...roles: ("admin" | "user")[]) => {
             throw new Error("User not found");
         }
 
-        console.log("Decoded token : --- : ", decoded);
+        // console.log("Decoded token : --- : ", decoded);
         req.user = decoded;
 
         if (roles.length && !roles.includes(decoded.role)) {
